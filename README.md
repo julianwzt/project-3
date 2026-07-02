@@ -1,4 +1,4 @@
-# Aplikasi Pendataan Mahasiswa (VB6 + PostgreSQL + Minikube)
+# Aplikasi Pendataan Mahasiswa
 
 Aplikasi desktop berbasis Visual Basic 6.0 yang mengimplementasikan arsitektur *Client-Server* dengan koneksi langsung (*direct connection*) ke database PostgreSQL yang berjalan di dalam *cluster* Kubernetes (Minikube).
 
