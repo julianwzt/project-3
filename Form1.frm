@@ -21,7 +21,7 @@ Begin VB.Form Nama
       _ExtentX        =   2990
       _ExtentY        =   873
       _Version        =   393216
-      Format          =   189595649
+      Format          =   104464385
       CurrentDate     =   46205
    End
    Begin VB.TextBox txtCari 
