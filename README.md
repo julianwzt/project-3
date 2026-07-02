@@ -18,20 +18,15 @@ Aplikasi desktop berbasis Visual Basic 6.0 yang mengimplementasikan arsitektur *
 ## Panduan Setup & Deployment
 ### 1. Persiapan Database (Minikube)
 1. Jalankan cluster Minikube: `minikube start`.
-2. Buat *ConfigMap* dari file `init.sql`: 
+2. Buat *ConfigMap* dari file init.sql: 
    `kubectl create configmap db-init --from-file=init.sql`.
 3. Deploy database dan service: `kubectl apply -f k8s-db.yaml`.
-4. Tunggu pod `pg-db` berstatus **Running**: `kubectl get pods`.
+4. Tunggu pod pg-db berstatus **Running**: `kubectl get pods`.
 
 ### 2. Koneksi Aplikasi
 1. Jalankan *tunneling* port ke database: `kubectl port-forward svc/pg-svc 5433:5432`.
-   *(Jika port 5432 di Windows sudah terpakai, gunakan 5433 seperti contoh di atas)*.
 2. Install **psqlODBC 32-bit (x86)**.
 3. Konfigurasi **ODBC Data Sources (32-bit)**:
    - Tambahkan *System DSN* baru ("PostgreSQL Unicode").
    - Server: `localhost`, Port: `5433`, User: `postgres`, Password: `password_database_kamu`.
    - Lakukan **Test Connection** hingga berhasil.
-
-## Troubleshooting
-- **Error 424 (Object Required):** Pastikan semua nama komponen di *Properties* (seperti `cmbJurusan`, `dgMahasiswa`, `CD1`) sudah sesuai dengan kode.
-- **Port Forbidden:** Jika `port-forward` gagal karena akses ditolak, pastikan aplikasi PostgreSQL lokal di Windows sudah dimatikan atau ganti port lokal pada perintah `port-forward`.
